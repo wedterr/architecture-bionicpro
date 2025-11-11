@@ -1,2 +1,6 @@
+/node_modules
 /postgres-keycloak-data
 2024__yandex-architecture-sso.code-workspace
+/clickhouse-data
+/postgres-crm-data
+/airflow_postgres_data

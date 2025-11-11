@@ -6,10 +6,20 @@ import ReportPage from './components/ReportPage';
 const keycloakConfig: KeycloakConfig = {
   url: process.env.REACT_APP_KEYCLOAK_URL,
   realm: process.env.REACT_APP_KEYCLOAK_REALM||"",
-  clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID||""
+  clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID||"",
+
 };
 
-const keycloak = new Keycloak(keycloakConfig);
+export const keycloak = new Keycloak(keycloakConfig);
+export function initKeycloak() {
+  keycloak.init({
+    onLoad: "check-sso",
+    pkceMethod: "S256",
+    enableLogging: true,
+    checkLoginIframe: false,
+    flow: 'standard'
+  });
+}
 
 const App: React.FC = () => {
   return (
